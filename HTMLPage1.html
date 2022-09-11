@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+a=0
+function a1()
+{
+	b=a+1;
+	a=b
+	document.getElementById("aa").innerHTML = "分数：" + a;
+   
+	}
+    setInterval(function a1() { alert(a); a = 0; document.getElementById("aa").innerHTML = "分数：" + a; }, 30000);
+function a2()
+{
+	a=0
+	document.getElementById("aa").innerHTML="分数："+a;
+}
+</script>
+<style>
+body 
+{
+	background-image:url('https://pics7.baidu.com/feed/a8773912b31bb0511d1d7053608503be4bede09f.jpeg?token=6795edb1d4a9bc68e852b7a16337a2d3');
+ }
+img
+{
+	position:relative;
+	animation:myfirst 2s  infinite alternate;
+}
+@keyframes myfirst
+{
+	0%   { left:960px; top:0px;}
+	100%  {left:960px; top:960px;}
+}
+button
+{
+	left:0px; top:0px
+}
+</style>
+</head>
+<body>
+<img src="https://img.tukuppt.com/png_preview/00/41/41/qY6QNI9NiK.jpg!/fw/780"  width="70" height="140" onclick="a1()" id="aaa">
+<h1 id="aa"></h1>
+<button onclick="a2()"><h1> 清零 </h1></button>
+</body>
+</html>
