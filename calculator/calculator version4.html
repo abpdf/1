@@ -2,15 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>Calculator</title>
 	<script>
-		var operator1;
-		order = 1;
-		var string1 = new String;
-		var string2 = new String;
 		var number1 = new Number;
 		var number2 = new Number;
 		var result_number = new Number;
+		var operator1;
+		order = 1;
+		b = 1;
 		number1 = 0;
 		number2 = 0;
 		result_number = 0;
@@ -21,11 +20,18 @@
 		function number(a) {
 			if (order === 1) {
 				if (finish === 1) {
+					b = 1;
 					number1 = 0;
-					finish = 0;
-					decimal = 0;
+					number2 = 0;
+					result_number = 0;
 					bits = 1;
+					decimal1 = 0;
+					decimal2 = 0;
+					finish = 0;
 					document.getElementById("aa").innerHTML = number1;
+					document.getElementById("aaa").innerHTML = "";
+					document.getElementById("aaaa").innerHTML = "";
+					document.getElementById("aaaaa").innerHTML = "";
 				}
 				if (decimal1 === 0) {
 					number1 = number1 * 10 + a;
@@ -33,7 +39,8 @@
 				}
 				if (decimal1 === 1) {
 					bits = bits * 10;
-					number1 = a / bits + number1;
+					b = a / bits;
+					number1 = b  + number1;
 					document.getElementById("aa").innerHTML = number1;
 				}
 			}
@@ -62,6 +69,7 @@
 			decimal1 = 0;
 			decimal2 = 0;
 			bits = 1;
+			finish = 0;
 			document.getElementById("aa").innerHTML = number1;
 			document.getElementById("aaa").innerHTML = "";
 			document.getElementById("aaaa").innerHTML = "";
@@ -138,36 +146,92 @@
 			if (order === 1) {
 				number1 = 0;
 				decimal1 = 0;
+				finish = 0;
 				bits = 1;
 				document.getElementById("aa").innerHTML = number1;
 			}
 			if (order === 2) {
 				number2 = 0;
 				decimal2 = 0;
+				finish = 0;
 				bits = 1;
 				document.getElementById("aaaa").innerHTML = "";
+				document.getElementById("aaaaa").innerHTML = "";
 			}
 		}
 		function operator(operator11) {
-			if (operator11 === 1) {
-				document.getElementById("aaa").innerHTML = "+";
-				operator1 = operator11;
-				order = 2;
+			if (order === 1) {
+				if (operator11 === 1) {
+					document.getElementById("aaa").innerHTML = "+";
+					operator1 = operator11;
+					order = 2;
+				}
+				if (operator11 === 2) {
+					document.getElementById("aaa").innerHTML = "-";
+					operator1 = operator11;
+					order = 2;
+				}
+				if (operator11 === 3) {
+					document.getElementById("aaa").innerHTML = "×";
+					operator1 = operator11;
+					order = 2;
+				}
+				if (operator11 === 4) {
+					document.getElementById("aaa").innerHTML = "÷";
+					operator1 = operator11;
+					order = 2;
+				}
 			}
-			if (operator11 === 2) {
-				document.getElementById("aaa").innerHTML = "-";
-				operator1 = operator11;
-				order = 2;
-			}
-			if (operator11 === 3) {
-				document.getElementById("aaa").innerHTML = "×";
-				operator1 = operator11;
-				order = 2;
-			}
-			if (operator11 === 4) {
-				document.getElementById("aaa").innerHTML = "÷";
-				operator1 = operator11;
-				order = 2;
+			else {
+				if (number === 0) {
+					if (operator11 === 1) {
+						document.getElementById("aaa").innerHTML = "+";
+						operator1 = operator11;
+						order = 2;
+					}
+					if (operator11 === 2) {
+						document.getElementById("aaa").innerHTML = "-";
+						operator1 = operator11;
+						order = 2;
+					}
+					if (operator11 === 3) {
+						document.getElementById("aaa").innerHTML = "×";
+						operator1 = operator11;
+						order = 2;
+					}
+					if (operator11 === 4) {
+						document.getElementById("aaa").innerHTML = "÷";
+						operator1 = operator11;
+						order = 2;
+					}
+				}
+				else {
+					if (operator1 === 1) {
+						document.getElementById("aaa").innerHTML = "+";
+						result_number = number1 + number2;
+						number1 = result_number;
+					}
+					if (operator1 === 2) {
+						document.getElementById("aaa").innerHTML = "-";
+						result_number = number1 - number2;
+						number1 = result_number;
+					}
+					if (operator1 === 3) {
+						document.getElementById("aaa").innerHTML = "×";
+						result_number = number1 * number2;
+						number1 = result_number;
+					}
+					if (operator1 === 4) {
+						document.getElementById("aaa").innerHTML = "÷";
+						result_number = number1 / number2;
+						number1 = result_number;
+					}
+                    document.getElementById("aa").innerHTML = number1;
+					number2 = 0;
+					document.getElementById("aaaa").innerHTML = "";
+                    document.getElementById("aaaaa").innerHTML = "";
+					order = 2;
+				}
 			}
 		}
 		function equal() {
@@ -185,7 +249,7 @@
 			}
 			document.getElementById("aaaaa").innerHTML = "=" + result_number;
 			finish = 1;
-			
+			order = 1;
 		}
 	</script>
 </head>
